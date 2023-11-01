@@ -5,10 +5,13 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.app.mylibrary.FawrySdk
-import com.app.mylibrary.interfaces.FawryPreLaunch
-import com.app.mylibrary.interfaces.FawrySdkCallbacks
-import com.app.mylibrary.models.*
+import com.fawry.fawrypay.FawrySdk
+import com.fawry.fawrypay.interfaces.FawryPreLaunch
+import com.fawry.fawrypay.interfaces.FawrySdkCallbacks
+import com.fawry.fawrypay.models.AVLInfo
+import com.fawry.fawrypay.models.FawryLaunchModel
+import com.fawry.fawrypay.models.LaunchCustomerModel
+import com.fawry.fawrypay.models.LaunchMerchantModel
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,15 +28,15 @@ class MainActivity : AppCompatActivity() {
     var merchantCode = "USE_PROVIDED_MERCHANT_CODE"
     var merchantSecretCode = "USE_PROVIDED_SECRET_KEY"
 
-    val beneficiaryName = "testName"
     val beneficiaryWalletNumber = "12345678911"
-    val avlFees = 1.00
-    val avlValue = 1.00
-    val billingAcct = "01234567890"
+    val avlValue = 9.00
+    val billingAcct = "12345678911"
     val avlInfo = AVLInfo(billTypeCodeWithFees = 11,
-    billTypeCodeWithoutFees = 1234,
+    billTypeCodeWithoutFees = 13,
     internationalBANs = arrayListOf("123456","654321"),
-    BANValidationSize = 6)
+    BANValidationSize = 6,
+    onUsAvlFees = 7.0,
+    offUsAvlFees = 11.0)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,9 +67,7 @@ class MainActivity : AppCompatActivity() {
                 allow3DPayment = true,
                 skipReceipt = false,
                 skipLogin = true,
-                beneficiaryName = beneficiaryName,
                 beneficiaryWalletNumber = beneficiaryWalletNumber,
-                avlFees = avlFees,
                 avlValue = avlValue,
                 billingAcct = billingAcct,
                 avlInfo = avlInfo
