@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="fawry_blue">#FF000000</color>
     <color name="fawry_yellow">#F44336</color>
+    <color name="fawry_green">#FFEB3B</color>
+    <color name="dim_text_color">#FFFFFFFF</color>
+    <color name="fawry_black">#FFFFFFFF</color>
+    <color name="fawry_white">#FFFFFFFF</color>
+    <color name="fawry_background">#809199</color>
 </resources>
