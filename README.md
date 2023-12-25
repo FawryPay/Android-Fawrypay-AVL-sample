@@ -111,3 +111,14 @@ FawryLaunchModel
 | avlInfo            | AVLInfo                  | mandatory    | \-                                               | “01234567890”                   |
 | apiPath            | String                   | optional     | \-                                               | "fawrypay-a pi/api/"            |
 
+
+2.  Calling Mode:
+     -  Payment Mode: Call launchAVL from CalllaunchAVLfromFawrySdk.launchAVL
+
+| **PARAMETER**     | **TYPE** | **REQUIRED** | **DESCRIPTION**                                 | **EXAMPLE**                                        |
+|---------------|---------------|---------------|---------------|---------------|
+| activity          | Activity | required     | The activity which will be the starting point of the SDK.| \-                              |
+| _fawryLaunch Model| FawryLaunchModel| required     | Has info that needed to launch the SDK| Example in step 3             |
+| _baseUrl          | String   | required     | Provided by the support team. Use staging URL for testing and switch for production to go live.| (https://atfawry.fawrystaging.com) (staging)        (https://atfawry.com) (production)|
+| _languages        | String   | required     | SDK language which will affect SDK's interface languages.|FawrySdk.Langua ges.ENGLISH|
+
