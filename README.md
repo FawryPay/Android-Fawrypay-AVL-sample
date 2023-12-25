@@ -148,3 +148,4 @@ and for logo you can add a png file in the drawable package and name it fawry_pa
       fawry_bold_font
       fawry_regular_font
 
+<img src="https://github.com/FawryPay/Android-Fawrypay-AVL-sample/blob/master/Docs/7.png" width="300"/> 
