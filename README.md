@@ -163,10 +163,12 @@ and for logo you can add a png file in the drawable package and name it fawry_pa
         -   if you enabled the receipt, this callback will be called after clicking the done button in the receipt.
         -   if you disabled the receipt, this callback will be called upon the finish of the payment screen and the failure of the payment.
 
-  5. **onPaymentCompleted(msg:String,data:Any?){}**
-      -    will be called only whether the payment passed or not. And it's called upon receiving the response of the payment either success or fail.
-  6. **onSuccess(msg:String,data:Any?){}**
-    
+  4. **onPaymentCompleted(msg:String,data:Any?){}**
+       -    will be called only whether the payment passed or not. And it's called upon receiving the response of the payment either success or fail.
+  5. **onSuccess(msg:String,data:Any?){}**
+        -   if the payment passed.
+        -   if you enabled the receipt, this callback will be called after clicking the done button in the receipt.
+        -   if you disabled the receipt, this callback will be called upon the finish of the payment screen and the success of the payment.
 
 
 
