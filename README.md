@@ -84,7 +84,7 @@ AVLInfo
 |---------------|---------------|---------------|---------------|---------------|
 | billTypeCodeWith Fees| Int      | mandatory    | \-                                                | 4433                                              |
 | billTypeCodeWith outFees| Int      | mandatory    | \-                                                | 3344                                              |
-| internationalBANs| ArrayList <String>| mandatory    |BANs related to the bank to use the billTypeCodeWithoutFees| arrayListOf("51234 5","5506900          |
+| internationalBANs| ArrayList [String] | mandatory    |BANs related to the bank to use the billTypeCodeWithoutFees| arrayListOf("51234 5","5506900          |
 | BANValidationSize| Int      | mandatory    | \-                                                | 6                                                 |
 | onUsAvlFees      | Double   | mandatory    | \-                                                | 5.0                                               |
 | offUsAvlFees     | Double   | mandatory    | \-                                                | 7.0                                               |
