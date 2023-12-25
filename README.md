@@ -108,4 +108,6 @@ FawryLaunchModel
 | beneficiaryWalletNumber| String                   | mandatory    | \-                                              | “01234567890”                   |
 | avlValues          | Double                   | mandatory    | \-                                               | 7.00                            |
 | billingAcct        | String                   | mandatory    | \-                                               | “01234567890”                   |
+| avlInfo            | AVLInfo                  | mandatory    | \-                                               | “01234567890”                   |
+| apiPath            | String                   | optional     | \-                                               | "fawrypay-a pi/api/"            |
 
