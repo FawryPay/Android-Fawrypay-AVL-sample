@@ -21,3 +21,13 @@ Make sure you have an active FawryPay account, or [**create an account**](https:
 ------------------------------------------------------------------------
 ### **How it works**
 <img src="https://github.com/FawryPay/Android-Fawrypay-AVL-sample/blob/master/Docs/3.png" width="900"/>
+
+
+On this page, we will walk you through the Android SDK integration steps:
+
+1.  InstallingFawryPaySDK.
+2.  InitializeandConfigureFawryPayAndroidSDK.
+3.  Override the SDK colors.
+4.   Return payment processing information and inform your client of the payment result.
+
+
