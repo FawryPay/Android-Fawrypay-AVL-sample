@@ -71,6 +71,23 @@ and pass the required parameters (Required and optional parameters are determine
 ![](https://github.com/FawryPay/Android-Fawrypay-AVL-sample/blob/master/Docs/4.png)
 
 
+LaunchCustomerModel
+| **PARAMETER**     | **TYPE** | **REQUIRED** | **DESCRIPTION**                                 | **EXAMPLE**                                        |
+|---------------|---------------|---------------|---------------|---------------|
+| customerName      | String   | optional     | \-                                              | Name Name                                          |
+| customerEmail     | String   | optional     | \-                                              | [email\@email.com](mailto:email@email.com)         |
+| customerMobile    | String   | optional     | \-                                              | +0100000000                                        |
+| customerProfileId | String   | optional     | \-                                              | 1234                                               |
+
+AVLInfo
+| **PARAMETER**     | **TYPE** | **REQUIRED** | **DESCRIPTION**                                 | **EXAMPLE**                                          |
+|---------------|---------------|---------------|---------------|---------------|
+| billTypeCodeWith Fees| Int      | mandatory    | \-                                                | 4433                                              |
+| billTypeCodeWith outFees| Int      | mandatory    | \-                                                | 3344                                              |
+| internationalBANs| ArrayList <String>| mandatory    |BANs related to the bank to use the billTypeCodeWithoutFees| arrayListOf("51234 5","5506900          |
+| BANValidationSize| Int      | mandatory    | \-                                                | 6                                                 |
+| onUsAvlFees      | Double   | mandatory    | \-                                                | 5.0                                               |
+| offUsAvlFees     | Double   | mandatory    | \-                                                | 7.0                                               |
 
 
 
