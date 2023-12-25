@@ -41,6 +41,26 @@ This document illustrates how our gateway can be integrated into your iOS applic
     jcenter()
     maven { url 'https://nexus.mobile.fawry.io/repository/maven-releases/' } 
     }
+2. And add the following to your (app) `build.gradle`
+<!-- -->
+
+    dependencies {
+    ...
+    implementation 'com.fawry.fawrypay:avl:0.0.9' 
+    }
+
+3. Add the following to your `Manifest.xml`
+<!-- -->
+
+    <application
+    ...
+    tools:replace="android:allowBackup" />
+
+4. Finally add the following property to your `build.properties`
+<!-- -->
+
+    android.enableJetifier=true
+
 
 
 
