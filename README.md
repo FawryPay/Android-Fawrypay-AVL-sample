@@ -122,3 +122,13 @@ FawryLaunchModel
 | _baseUrl          | String   | required     | Provided by the support team. Use staging URL for testing and switch for production to go live.| (https://atfawry.fawrystaging.com) (staging)        (https://atfawry.com) (production)|
 | _languages        | String   | required     | SDK language which will affect SDK's interface languages.|FawrySdk.Langua ges.ENGLISH|
 
+
+
+## **Step 3: Override the SDK colors**
+If you want to change colors: -
+You need to know the ID of the color you want to change then add a color in your colors file in the host app with the same id but with the value you want
+
+
+<img src="https://github.com/FawryPay/Android-Fawrypay-AVL-sample/blob/master/Docs/5.png" width="300"/>      <img src="https://github.com/FawryPay/Android-Fawrypay-AVL-sample/blob/master/Docs/6.png" width="300"/>
+
+
