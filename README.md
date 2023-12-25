@@ -30,4 +30,18 @@ On this page, we will walk you through the Android SDK integration steps:
 3.  Override the SDK colors.
 4.   Return payment processing information and inform your client of the payment result.
 
+## **Step 1: Installing FawryPaySDK**
+This document illustrates how our gateway can be integrated into your iOS application in simple and easy steps. Please follow the steps in order to integrate the FawryPay iOS SDK in your application.
+
+
+1.  Add the following repository to your (root) `build.gradle`
+<!-- -->
+
+    repositories { ...
+    jcenter()
+    maven { url 'https://nexus.mobile.fawry.io/repository/maven-releases/' } 
+    }
+
+
+
 
