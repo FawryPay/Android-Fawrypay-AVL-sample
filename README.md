@@ -61,6 +61,15 @@ This document illustrates how our gateway can be integrated into your iOS applic
 
     android.enableJetifier=true
 
+## **Step 2: Initialize AVL Android SDK**
+1. Create an instance of
+    - LaunchCustomerModel
+    - LaunchMerchantModel
+    - FawryLaunchModel
+
+and pass the required parameters (Required and optional parameters are determined below).
+![](https://github.com/FawryPay/Android-Fawrypay-AVL-sample/blob/master/Docs/4.png)
+
 
 
 
