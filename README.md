@@ -132,3 +132,19 @@ You need to know the ID of the color you want to change then add a color in your
 <img src="https://github.com/FawryPay/Android-Fawrypay-AVL-sample/blob/master/Docs/5.png" width="300"/>      <img src="https://github.com/FawryPay/Android-Fawrypay-AVL-sample/blob/master/Docs/6.png" width="300"/>
 
 
+If you changed these colors it will change the main screen color in the payment fragment I made it black and red as an example in the host app, but you can change it to whatever you want.
+For example:
+<!-- -->
+    <color name="fawry_blue">#FF000000</color> 
+    <color name="fawry_yellow">#F44336</color> 
+    <color name="fawry_green">#FFEB3B</color> 
+    <color name="dim_text_color">#FFFFFFFF</color> 
+    <color name="fawry_black">#FFFFFFFF</color> 
+    <color name="fawry_white">#FFFFFFFF</color>
+    <color name="fawry_background">#809199</color>
+
+and for logo you can add a png file in the drawable package and name it fawry_pay_logo.png and for fonts you can add fonts in your package with the names:
+<!-- -->
+      fawry_bold_font
+      fawry_regular_font
+
