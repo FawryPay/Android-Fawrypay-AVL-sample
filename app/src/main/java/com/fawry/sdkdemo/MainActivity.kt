@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     var merchantSecretCode = "USE_PROVIDED_SECRET_KEY"
 
     val beneficiaryWalletNumber = "12345678911"
+    val beneficiaryName = "name_example"
     val avlValue = 9.00
     val billingAcct = "12345678911"
     val avlInfo = AVLInfo(billTypeCodeWithFees = 11,
@@ -70,7 +71,8 @@ class MainActivity : AppCompatActivity() {
                 beneficiaryWalletNumber = beneficiaryWalletNumber,
                 avlValue = avlValue,
                 billingAcct = billingAcct,
-                avlInfo = avlInfo
+                avlInfo = avlInfo,
+                beneficiaryName = beneficiaryName
             ),
             object : FawrySdkCallbacks {
                 override fun onPreLaunch(onPreLaunch: FawryPreLaunch) {
