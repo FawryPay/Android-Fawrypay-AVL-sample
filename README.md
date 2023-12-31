@@ -46,7 +46,7 @@ This document illustrates how our gateway can be integrated into your iOS applic
 
     dependencies {
     ...
-    implementation 'com.fawry.fawrypay:avl:0.0.9' 
+    implementation 'com.fawry.fawrypay:avl:0.0.10' 
     }
 
 3. Add the following to your `Manifest.xml`
