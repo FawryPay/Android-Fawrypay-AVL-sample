@@ -29,15 +29,16 @@ class MainActivity : AppCompatActivity() {
     var merchantSecretCode = "USE_PROVIDED_SECRET_KEY"
 
     val beneficiaryWalletNumber = "12345678911"
-    val beneficiaryName = "name_example"
-    val avlValue = 9.00
+    val avlValue = 15.00
     val billingAcct = "12345678911"
     val avlInfo = AVLInfo(billTypeCodeWithFees = 11,
     billTypeCodeWithoutFees = 13,
     internationalBANs = arrayListOf("123456","654321"),
     BANValidationSize = 6,
     onUsAvlFees = 7.0,
-    offUsAvlFees = 11.0)
+    offUsAvlFees = 11.0,
+        minValue = 13.0,
+        maxValue = 21.0)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,8 +72,7 @@ class MainActivity : AppCompatActivity() {
                 beneficiaryWalletNumber = beneficiaryWalletNumber,
                 avlValue = avlValue,
                 billingAcct = billingAcct,
-                avlInfo = avlInfo,
-                beneficiaryName = beneficiaryName
+                avlInfo = avlInfo
             ),
             object : FawrySdkCallbacks {
                 override fun onPreLaunch(onPreLaunch: FawryPreLaunch) {
