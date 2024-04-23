@@ -39,7 +39,7 @@ This document illustrates how our gateway can be integrated into your iOS applic
 
     repositories { ...
     jcenter()
-    maven { url 'https://nexus.mobile.fawry.io/repository/maven-releases/' } 
+    maven { url 'https://nexus.mobile.fawry.io/repository/maven-public/' } 
     }
 2. And add the following to your (app) `build.gradle`
 <!-- -->
