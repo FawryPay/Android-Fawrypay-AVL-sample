@@ -1,3 +1,4 @@
+
 # 
 
 # **FawryPay-AVL android SDK**
@@ -6,7 +7,7 @@ Accept popular payment methods with a single client-side implementation.
 
 ## **Before You Start**
 
-Use this integration if you want your iOS application to:
+Use this integration if you want your Android application to:
 
 -   Accept cards and other payment methods.
 -   Save and display cards for reuse.
@@ -31,7 +32,7 @@ On this page, we will walk you through the Android SDK integration steps:
 4.   Return payment processing information and inform your client of the payment result.
 
 ## **Step 1: Installing FawryPaySDK**
-This document illustrates how our gateway can be integrated into your iOS application in simple and easy steps. Please follow the steps in order to integrate the FawryPay iOS SDK in your application.
+This document illustrates how our gateway can be integrated into your Android application in simple and easy steps. Please follow the steps in order to integrate the FawryPay Android SDK in your application.
 
 
 1.  Add the following repository to your (root) `build.gradle`
@@ -46,7 +47,7 @@ This document illustrates how our gateway can be integrated into your iOS applic
 
     dependencies {
     ...
-    implementation 'com.fawry.fawrypay:avl:0.0.18' 
+    implementation 'com.fawry.fawrypay:avl:0.1.1' 
     }
 
 3. Add the following to your `Manifest.xml`
@@ -122,9 +123,51 @@ FawryLaunchModel
 | _baseUrl          | String   | required     | Provided by the support team. Use staging URL for testing and switch for production to go live.| (https://atfawry.fawrystaging.com) (staging)        (https://atfawry.com) (production)|
 | _languages        | String   | required     | SDK language which will affect SDK's interface languages.|FawrySdk.Langua ges.ENGLISH|
 
+## **Step 3: Initialize screenless credit card payment**
+1. Create an instance of
+    - LaunchCustomerModel
+    - LaunchMerchantModel
+    - FawryLaunchModel
+    - CardDetailsModel
+
+LaunchCustomerModel
+| **PARAMETER**     | **TYPE** | **REQUIRED** | **DESCRIPTION**                                 | **EXAMPLE**                                        |
+|---------------|---------------|---------------|---------------|---------------|
+| customerName      | String   | optional     | \-                                              | Name Name                                          |
+| customerEmail     | String   | optional     | \-                                              | [email\@email.com](mailto:email@email.com)         |
+| customerMobile    | String   | optional     | \-                                              | +0100000000                                        |
+| customerProfileId | String   | optional     | \-                                              | 1234                                               |
+
+LaunchMerchantModel
+| **PARAMETER**  | **TYPE** | **REQUIRED** | **DESCRIPTION**                                                                                                                                                                | **EXAMPLE**                         |
+|---------------|---------------|---------------|---------------|---------------|
+| merchantCode   | String   | required     | Merchant ID provided during FawryPay account setup.                                                                                                                            | provided merchantCode               |
+| merchantRefNum | String   | required     | Merchant's transaction reference number is random 10 alphanumeric digits. You can call FrameworkHelper.shared?.getMerchantReferenceNumber() to generate it rather than pass it. | A1YU7MKI09                          |
+| secretCode     | String   | required     | provided by support     | provided merchant secret key |
 
 
-## **Step 3: Override the SDK colors**
+FawryLaunchModel
+| **PARAMETER**     |          **TYPE**        | **REQUIRED** | **DESCRIPTION**                                 | **EXAMPLE**                                         |
+|-------------------|--------------------------|--------------|---------------|---------------|
+| launchCustomerModel| LaunchCustomerModel      | optional     | Customer information.                             | \-                              |
+| launchMerchantModel| LaunchMerchantModel      | required     | Merchant information.                             | \-                              |
+| allow3DPayment     | Boolean                  | optional - default value = false| to allow 3D secure payment make it “true”| \-                              |
+| skipReceipt        | Boolean                  | optional - default value = false| to skip receipt after payment trial| \-                              |
+| skipLogin          | Boolean                  |optional - default value = false| to skip login screen in which we take email and mobile| \-                              |               |            |
+| apiPath            | String                   | optional     | \-                                               | "fawrypay-api/api/"            |\-                              |
+| authCaptureMode| Boolean                  |optional - default value = false| -|
+
+CardDetailsModel
+| **PARAMETER**     |          **TYPE**        | **REQUIRED** | **DESCRIPTION**                                 | **EXAMPLE**                                         |
+|-------------------|--------------------------|--------------|---------------|---------------|
+| cardNumber| String | required     | 16 digits card number                             | \-                              |
+| cardHolderName| String | required     | name on the card                             | \-                              |
+| cardExpiryYear| String |required     | card expiry year| \-                              |
+| cardExpiryMonth| String | required     | card expiry month| \-                              |                            |               |            |
+| cvv| String                   | required     |3 digits on the back of the card|-
+
+
+## **Step 4: Override the SDK colors**
 If you want to change colors: -
 You need to know the ID of the color you want to change then add a color in your colors file in the host app with the same id but with the value you want
 
@@ -151,7 +194,7 @@ and for logo you can add a png file in the drawable package and name it fawry_pa
 <img src="https://github.com/FawryPay/Android-Fawrypay-AVL-sample/blob/master/Docs/7.png" width="300"/> 
 
 
-## **Callbacks Explanation:**
+## **Step 5: Callbacks Explanation:**
   There are 5 callbacks:
   1. **onInit() { }**
         -    called before launching the flow successfully.
