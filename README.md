@@ -93,8 +93,7 @@ AVLInfo
 LaunchMerchantModel
 | **PARAMETER**  | **TYPE** | **REQUIRED** | **DESCRIPTION**                                                                                                                                                                | **EXAMPLE**                         |
 |---------------|---------------|---------------|---------------|---------------|
-| merchantCode   | String   | required     | Merchant ID provided during FawryPay account setup.                                                                                                                            | +/IPO2sghiethhN6tMC==               |
-| merchantRefNum | String   | required     | Merchant's transaction reference number is random 10 alphanumeric digits. You can call FrameworkHelper.shared?.getMerchantReferenceNumber() to generate it rather than pass it. | A1YU7MKI09                          |
+| merchantCode   | String   | required     | Merchant ID provided during FawryPay account setup.                                                                                                                            | +/IPO2sghiethhN6tMC==               |                       |
 | secretCode     | String   | required     | provided by support     | 4b8jw3j2-8gjhfrc-4wc4-scde-453dek3d |
 
 
@@ -107,7 +106,7 @@ FawryLaunchModel
 | skipReceipt        | Boolean                  | optional - default value = false| to skip receipt after payment trial| \-                              |
 | skipLogin          | Boolean                  |optional - default value = false| to skip login screen in which we take email and mobile| \-                              |
 | beneficiaryWalletNumber| String                   | mandatory    | \-                                              | “01234567890”                   |
-| avlValue          | Double                   | mandatory    | \-                                               | 7.00                            |
+| avlValues          | Double                   | mandatory    | \-                                               | 7.00                            |
 | billingAcct        | String                   | mandatory    | \-                                               | “01234567890”                   |
 | avlInfo            | AVLInfo                  | mandatory    | \-                                               | “01234567890”                   |
 | apiPath            | String                   | optional     | \-                                               | "fawrypay-a pi/api/"            |
@@ -157,6 +156,9 @@ FawryLaunchModel
 | skipLogin          | Boolean                  |optional - default value = false| to skip login screen in which we take email and mobile| \-                              |               |            |
 | apiPath            | String                   | optional     | \-                                               | "fawrypay-api/api/"            |\-                              |
 | authCaptureMode| Boolean                  |optional - default value = false| -|
+| chargeItems| ArrayList< PayableItem > |required | -|
+
+
 
 CardDetailsModel
 | **PARAMETER**     |          **TYPE**        | **REQUIRED** | **DESCRIPTION**                                 | **EXAMPLE**                                         |
