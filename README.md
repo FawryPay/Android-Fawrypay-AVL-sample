@@ -107,10 +107,11 @@ FawryLaunchModel
 | skipReceipt        | Boolean                  | optional - default value = false| to skip receipt after payment trial| \-                              |
 | skipLogin          | Boolean                  |optional - default value = false| to skip login screen in which we take email and mobile| \-                              |
 | beneficiaryWalletNumber| String                   | mandatory    | \-                                              | “01234567890”                   |
-| avlValues          | Double                   | mandatory    | \-                                               | 7.00                            |
+| avlValue          | Double                   | mandatory    | \-                                               | 7.00                            |
 | billingAcct        | String                   | mandatory    | \-                                               | “01234567890”                   |
 | avlInfo            | AVLInfo                  | mandatory    | \-                                               | “01234567890”                   |
 | apiPath            | String                   | optional     | \-                                               | "fawrypay-a pi/api/"            |
+ screenTitle | String                   | optional     | \-                                               | -           |
 
 
 2.  Calling Mode:
