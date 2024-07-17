@@ -138,6 +138,15 @@ LaunchCustomerModel
 | customerMobile    | String   | optional     | \-                                              | +0100000000                                        |
 | customerProfileId | String   | optional     | \-                                              | 1234                                               |
 
+
+BillItems
+| **PARAMETER**  | **TYPE** | **REQUIRED** | **DESCRIPTION**                                                                                                                                                                | **EXAMPLE**                         |
+|---------------|---------------|---------------|---------------|---------------|
+| itemId| String   | required     | item code                                                                                                                            | -              |                       |
+| description| String   | optional| item description    | - |             |
+| quantity| String   | required| item quantity    | - |
+| price| String   | required| item price| - |
+
 LaunchMerchantModel
 | **PARAMETER**  | **TYPE** | **REQUIRED** | **DESCRIPTION**                                                                                                                                                                | **EXAMPLE**                         |
 |---------------|---------------|---------------|---------------|---------------|
