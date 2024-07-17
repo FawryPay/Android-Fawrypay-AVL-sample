@@ -12,7 +12,15 @@
         android:id="@+id/btn_AVL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AVL" />
+        android:text="AVL"
+        android:layout_margin="10dp"/>
+
+    <Button
+        android:id="@+id/btn_screenless_card_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="screenless credit card payment"
+        android:layout_margin="10dp"/>
 
 
 
