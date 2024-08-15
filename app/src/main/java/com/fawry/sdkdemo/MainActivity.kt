@@ -11,6 +11,7 @@ import com.fawry.fawrypay.interfaces.FawrySdkCallbacks
 import com.fawry.fawrypay.models.AVLInfo
 import com.fawry.fawrypay.models.BillItems
 import com.fawry.fawrypay.models.CardDetailsModel
+import com.fawry.fawrypay.models.CloseAction
 import com.fawry.fawrypay.models.FawryLaunchModel
 import com.fawry.fawrypay.models.LaunchCustomerModel
 import com.fawry.fawrypay.models.LaunchMerchantModel
@@ -118,8 +119,9 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 }
 
-                override fun onFailure(error: String) {
+                override fun onFailure(error: String, closeAction: CloseAction?) {
                     Log.d("avl_sdk", "on failure ${error}")
+                    Log.d("avl_sdk", "close action: ${closeAction?.name}")
                     Toast.makeText(
                         this@MainActivity,
                         "on failure ${error}",
@@ -176,8 +178,9 @@ class MainActivity : AppCompatActivity() {
                 }
 
 
-                override fun onFailure(error: String) {
+                override fun onFailure(error: String, closeAction: CloseAction?) {
                     Log.d("avl_sdk", "error msg: ${error}")
+                    Log.d("avl_sdk", "close action: ${closeAction?.name}")
                     Toast.makeText(this@MainActivity, "on failure ${error}", Toast.LENGTH_SHORT)
                         .show()
                 }
