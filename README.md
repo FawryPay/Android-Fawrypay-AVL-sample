@@ -111,6 +111,7 @@ FawryLaunchModel
 | avlInfo            | AVLInfo                  | mandatory    | \-                                               | “01234567890”                   |
 | apiPath            | String                   | optional     | \-                                               | "fawrypay-a pi/api/"            |
  screenTitle | String                   | optional     | \-                                               | -           |
+ showZeroFeesView | Boolean                   | mandatory - default value = false     | \-                                               | -           |
 
 
 2.  Calling Mode:
