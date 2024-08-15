@@ -93,7 +93,8 @@ class MainActivity : AppCompatActivity() {
                 beneficiaryWalletNumber = beneficiaryWalletNumber,
                 avlValue = null,
                 billingAcct = billingAcct,
-                avlInfo = avlInfo
+                avlInfo = avlInfo,
+                showZeroFeesView = true
             ),
             object : FawrySdkCallbacks {
                 override fun onPreLaunch(onPreLaunch: FawryPreLaunch) {
