@@ -88,8 +88,8 @@ AVLInfo
 | billTypeCodeWith outFees| Int      | mandatory    | \-                                                | 3344                                              |
 | internationalBANs| ArrayList [String] | mandatory    |BANs related to the bank to use the billTypeCodeWithoutFees| arrayListOf("51234 5","5506900          |
 | BANValidationSize| Int      | mandatory    | \-                                                | 6                                                 |
-| onUsAvlFees      | Double   | mandatory    | \-                                                | 5.0                                               |
-| offUsAvlFees     | Double   | mandatory    | \-                                                | 7.0                                               |
+| onUsAvlFees      | Double (should be maximum 2 digits after the decimal point, if the value is more than 2 digits after the decimal point it will be trimmed to 2 digits after the decimal point)  | mandatory    | \-                                                | 5.0                                               |
+| offUsAvlFees     | Double (should be maximum 2 digits after the decimal point, if the value is more than 2 digits after the decimal point it will be trimmed to 2 digits after the decimal point)  | mandatory    | \-                                                | 7.0                                               |
 
 LaunchMerchantModel
 | **PARAMETER**  | **TYPE** | **REQUIRED** | **DESCRIPTION**                                                                                                                                                                | **EXAMPLE**                         |
@@ -107,7 +107,7 @@ FawryLaunchModel
 | skipReceipt        | Boolean                  | optional - default value = false| to skip receipt after payment trial| \-                              |
 | skipLogin          | Boolean                  |optional - default value = false| to skip login screen in which we take email and mobile| \-                              |
 | beneficiaryWalletNumber| String                   | mandatory    | \-                                              | “01234567890”                   |
-| avlValues          | Double                   | mandatory    | \-                                               | 7.00                            |
+| avlValue          | Double (should be maximum 2 digits after the decimal point, if the value is more than 2 digits after the decimal point it will be trimmed to 2 digits after the decimal point)                   | mandatory    | \-                                               | 7.00                            |
 | billingAcct        | String                   | mandatory    | \-                                               | “01234567890”                   |
 | avlInfo            | AVLInfo                  | mandatory    | \-                                               | “01234567890”                   |
 | apiPath            | String                   | optional     | \-                                               | "fawrypay-a pi/api/"            |
