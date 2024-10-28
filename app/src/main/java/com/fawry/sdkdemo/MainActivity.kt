@@ -44,8 +44,8 @@ class MainActivity : AppCompatActivity() {
         BANValidationSize = 6,
         onUsAvlFees = 7.0,
         offUsAvlFees = 11.0,
-        minValue = 13.0,
-        maxValue = 21.0
+        minValue = null,
+        maxValue = null
     )
 
 
