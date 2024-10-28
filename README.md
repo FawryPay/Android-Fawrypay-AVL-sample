@@ -1,4 +1,5 @@
 
+
 # 
 
 # **FawryPay-AVL android SDK**
@@ -47,7 +48,7 @@ This document illustrates how our gateway can be integrated into your Android ap
 
     dependencies {
     ...
-    implementation 'com.fawry.fawrypay:avl:0.1.2' 
+    implementation 'com.fawry.fawrypay:avl:0.1.4' 
     }
 
 3. Add the following to your `Manifest.xml`
@@ -139,14 +140,6 @@ LaunchCustomerModel
 | customerMobile    | String   | optional     | \-                                              | +0100000000                                        |
 | customerProfileId | String   | optional     | \-                                              | 1234                                               |
 
-
-BillItems
-| **PARAMETER**  | **TYPE** | **REQUIRED** | **DESCRIPTION**                                                                                                                                                                | **EXAMPLE**                         |
-|---------------|---------------|---------------|---------------|---------------|
-| itemId| String   | required     | item code                                                                                                                            | -              |                       |
-| description| String   | optional| item description    | - |             |
-| quantity| String   | required| item quantity    | - |
-| price| String   | required| item price| - |
 
 LaunchMerchantModel
 | **PARAMETER**  | **TYPE** | **REQUIRED** | **DESCRIPTION**                                                                                                                                                                | **EXAMPLE**                         |
