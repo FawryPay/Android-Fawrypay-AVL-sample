@@ -90,7 +90,8 @@ AVLInfo
 | BANValidationSize| Int      | mandatory    | \-                                                | 6                                                 |
 | onUsAvlFees      | Double (should be maximum 2 digits after the decimal point, if the value is more than 2 digits after the decimal point it will be trimmed to 2 digits after the decimal point)  | mandatory    | \-                                                | 5.0                                               |
 | offUsAvlFees     | Double (should be maximum 2 digits after the decimal point, if the value is more than 2 digits after the decimal point it will be trimmed to 2 digits after the decimal point)  | mandatory    | \-                                                | 7.0                                               |
-
+| minValue | Double   | optional | \-                                                |                                              |
+| maxValue | Double | optional | \-                                                |    
 LaunchMerchantModel
 | **PARAMETER**  | **TYPE** | **REQUIRED** | **DESCRIPTION**                                                                                                                                                                | **EXAMPLE**                         |
 |---------------|---------------|---------------|---------------|---------------|
