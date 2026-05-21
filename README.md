@@ -15,7 +15,7 @@ Make sure you have an active FawryPay account, or [**create an account**](https:
 
 
 ### **How Android SDK Looks Like**
-<img width="300" alt="shared image (4)" src="https://github.com/user-attachments/assets/c683ae4e-0b47-4ab4-865e-9a3dd2cf7a5c" />    <img src="https://github.com/FawryPay/Android-Fawrypay-AVL-sample/blob/master/Docs/2.png" width="300"/>
+<img width="300" alt="shared image (4)" src="https://github.com/user-attachments/assets/c683ae4e-0b47-4ab4-865e-9a3dd2cf7a5c" />
 
 [**Download**](https://drive.google.com/drive/folders/1T__IkSKiM21zHcpeGfKF0xTQNCE6YtKk) and test our sample application.
 ------------------------------------------------------------------------
