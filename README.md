@@ -69,7 +69,7 @@ This document illustrates how our gateway can be integrated into your Android ap
     - FawryLaunchModel
 
 and pass the required parameters (Required and optional parameters are determined below).
-![](https://github.com/FawryPay/Android-Fawrypay-AVL-sample/blob/master/Docs/4.png)
+<img width="876" height="616" alt="image" src="https://github.com/user-attachments/assets/e7a43d87-650d-4d6d-b1e7-bd5c41f053cc" />
 
 
 LaunchCustomerModel
