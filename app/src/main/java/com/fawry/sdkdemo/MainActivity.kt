@@ -1,31 +1,30 @@
 package com.fawry.sdkdemo
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.fawry.fawrypay.FawrySdk
-import com.fawry.fawrypay.interfaces.FawryPreLaunch
-import com.fawry.fawrypay.interfaces.FawrySdkCallbacks
-import com.fawry.fawrypay.models.AVLInfo
-import com.fawry.fawrypay.models.BillItems
-import com.fawry.fawrypay.models.CardDetailsModel
-import com.fawry.fawrypay.models.CloseAction
-import com.fawry.fawrypay.models.FawryLaunchModel
-import com.fawry.fawrypay.models.LaunchCustomerModel
-import com.fawry.fawrypay.models.LaunchMerchantModel
-import com.fawry.fawrypay.models.PayableItem
+import com.fawry.fawrypay.domain.models.AVLInfo
+import com.fawry.fawrypay.domain.models.CreatePayRefNoResponse
+import com.fawry.fawrypay.domain.models.FawryLaunchModel
+import com.fawry.fawrypay.domain.models.FawryPayError
+import com.fawry.fawrypay.domain.models.LaunchCustomerModel
+import com.fawry.fawrypay.domain.models.LaunchMerchantModel
+import com.fawry.fawrypay.utils.AVLCallbacks
+import com.fawry.fawrypay.utils.CardManagerCallbacks
+import com.fawry.fawrypay.utils.fawrySdk.LaunchFawrySdk
+import com.fawry.fawrypay.utils.fawrySdk.enums.Languages
+import com.fawry.fawrypay.utils.fawrySdk.enums.PaymentStatus
 
 
 class MainActivity : AppCompatActivity() {
-    val chargeItems = ArrayList<PayableItem>()
 
     //Replace all data below with your own data
     var baseUrl = "https://atfawrystaging.atfawry.com/"
 
     //customer info
     var customerName = "testName"
+    var customerProfileId = "1234"
     var customerMobile = "01234567890"
     var customerEmail =
         "test@test.com" //required in saving cards for payment with card tokenization
@@ -38,14 +37,19 @@ class MainActivity : AppCompatActivity() {
     val avlValue = 15.00
     val billingAcct = "12345678911"
     val avlInfo = AVLInfo(
-        billTypeCodeWithFees = 11,
-        billTypeCodeWithoutFees = 13,
+        offUsBTC = 11,
+        onUsBTC  = 13,
         internationalBANs = arrayListOf("123456", "654321"),
-        BANValidationSize = 6,
         onUsAvlFees = 7.0,
         offUsAvlFees = 11.0,
         minValue = null,
-        maxValue = null
+        maxValue = null,
+        beneficiaryName = null,
+        avlValue = null,
+        billingAcct = billingAcct,
+        beneficiaryWalletNumber = beneficiaryWalletNumber,
+        avlExtraProperties = null,
+        screenTitle = "AVL FLOW",
     )
 
 
@@ -53,31 +57,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        chargeItems.add(
-            BillItems(
-                itemId = "897fa8e81be26df25db592e81c31c",
-                description = "",
-                quantity = "1",
-                price = "7.00",
-            )
-        )
-
 
         val btnAVL = findViewById<Button>(R.id.btn_AVL)
         btnAVL.setOnClickListener {
             startAVL()
         }
 
-        val btnScreenlessCreditCardPayment = findViewById<Button>(R.id.btn_screenless_card_payment)
-        btnScreenlessCreditCardPayment.setOnClickListener {
-            startScreenlessCreditCardPayment()
+        val btnCardManager = findViewById<Button>(R.id.btn_card_manager)
+        btnCardManager.setOnClickListener {
+            startCardManager()
         }
     }
 
     private fun startAVL() {
-        FawrySdk.launchAVL(
-            this, FawrySdk.Languages.ENGLISH, baseUrl,
-            FawryLaunchModel(
+        LaunchFawrySdk.launchAVL(
+            activity = this, _languages = Languages.ENGLISH, _baseUrl = baseUrl,
+            _fawryLaunchModel = FawryLaunchModel (
                 launchCustomerModel = LaunchCustomerModel(
                     customerName = customerName,
                     customerEmail = customerEmail,
@@ -89,104 +84,63 @@ class MainActivity : AppCompatActivity() {
                 ),
                 allow3DPayment = true,
                 skipReceipt = false,
-                skipLogin = true,
-                beneficiaryWalletNumber = beneficiaryWalletNumber,
-                avlValue = null,
-                billingAcct = billingAcct,
                 avlInfo = avlInfo,
-                showZeroFeesView = true
             ),
-            object : FawrySdkCallbacks {
-                override fun onPreLaunch(onPreLaunch: FawryPreLaunch) {
-                    onPreLaunch.onContinue()
-                }
+            _callback = object : AVLCallbacks {
 
-                override fun onInit() {
-
-                }
-
-                override fun onSuccess(msg: String, data: Any?) {
-                    Log.d("avl_sdk", "on success ${msg}")
-                    Toast.makeText(this@MainActivity, "on success ${msg}", Toast.LENGTH_SHORT)
+                override fun onBackClicked() {
+                    Toast.makeText(this@MainActivity, "on back clicked", Toast.LENGTH_LONG)
                         .show()
                 }
 
-                override fun onPaymentCompleted(msg: String, data: Any?) {
-                    Log.d("avl_sdk", "on payment completed $data")
-                    Toast.makeText(
-                        this@MainActivity,
-                        "on payment completed $data",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                override fun onCancelClicked() {
+                    Toast.makeText(this@MainActivity, "on cancel clicked", Toast.LENGTH_LONG)
+                        .show()
                 }
 
-                override fun onFailure(error: String, closeAction: CloseAction?) {
-                    Log.d("avl_sdk", "on failure ${error}")
-                    Log.d("avl_sdk", "close action: ${closeAction?.name}")
-                    Toast.makeText(
-                        this@MainActivity,
-                        "on failure ${error}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                override fun onFailure(error: FawryPayError) {
+                    Toast.makeText(this@MainActivity, "on failure $error", Toast.LENGTH_LONG)
+                        .show()
+                }
+
+                override fun onPaymentCompleted(
+                    paymentStatus: PaymentStatus,
+                    data: CreatePayRefNoResponse?,
+                    error: FawryPayError?
+                ) {
+                    Toast.makeText(this@MainActivity, "onPaymentCompleted $paymentStatus", Toast.LENGTH_LONG)
+                        .show()
+                }
+
+                override fun onSuccess(
+                    paymentStatus: PaymentStatus,
+                    data: CreatePayRefNoResponse?
+                ) {
+                    Toast.makeText(this@MainActivity, "onSuccess $paymentStatus", Toast.LENGTH_LONG)
+                        .show()
                 }
             })
     }
 
-    private fun startScreenlessCreditCardPayment() {
-        FawrySdk.launchCreditcardByCardDetailsPayment(
-            activity = this,
-            _languages = FawrySdk.Languages.ENGLISH,
-            _baseUrl = baseUrl,
-            FawryLaunchModel(
+    private fun startCardManager(){
+        LaunchFawrySdk.launchCardManagerFlow(
+            activity = this, _languages = Languages.ENGLISH, _baseUrl = baseUrl,
+            _fawryLaunchModel = FawryLaunchModel(
                 launchCustomerModel = LaunchCustomerModel(
                     customerEmail = customerEmail,
-                    customerMobile = customerMobile
+                    customerMobile = customerMobile,
+                    customerProfileId = customerProfileId
                 ),
                 launchMerchantModel = LaunchMerchantModel(
                     merchantCode = merchantCode,
                     secretCode = merchantSecretCode,
-                    merchantRefNum = "${System.currentTimeMillis()}"
-
                 ),
-                allow3DPayment = true,
-                chargeItems = chargeItems,
-                skipReceipt = false,
-                skipLogin = true,
-                authCaptureMode = true,
-                paymentMethods = FawrySdk.PaymentMethods.ALL
-            ), object : FawrySdkCallbacks {
-                override fun onPreLaunch(onPreLaunch: FawryPreLaunch) {
-                    onPreLaunch.onContinue()
+            ),
+            _callback = object : CardManagerCallbacks {
+                override fun onFailure(error: FawryPayError) {
+                    Toast.makeText(this@MainActivity, "on failure $error", Toast.LENGTH_LONG).show()
                 }
-
-                override fun onInit() {
-
-                }
-
-                override fun onPaymentCompleted(msg: String, data: Any?) {
-                    Log.d("avl_sdk", "onPaymentCompleted msg: ${data}")
-                    Toast.makeText(
-                        this@MainActivity,
-                        "on payment completed $data",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                override fun onSuccess(msg: String, data: Any?) {
-                    Toast.makeText(this@MainActivity, "on success ${msg}", Toast.LENGTH_SHORT)
-                        .show()
-                    Log.d("avl_sdk", "msg: ${data}")
-                }
-
-
-                override fun onFailure(error: String, closeAction: CloseAction?) {
-                    Log.d("avl_sdk", "error msg: ${error}")
-                    Log.d("avl_sdk", "close action: ${closeAction?.name}")
-                    Toast.makeText(this@MainActivity, "on failure ${error}", Toast.LENGTH_SHORT)
-                        .show()
-                }
-                }, CardDetailsModel("5123450000000008","Khater","39","01","100")
-        )
+            })
     }
 
 }
