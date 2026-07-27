@@ -1,0 +1,12 @@
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "0ae0d6a720a600e277898b31cbdb4805afac44fc",
+  "prompts": {},
+  "humans": {
+    "h_8dc0df407a6426": {
+      "author": "AbdElRahman Khater <abdelrahman.khater@fawry.com>"
+    }
+  }
+}
