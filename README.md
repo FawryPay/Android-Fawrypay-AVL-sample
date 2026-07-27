@@ -47,7 +47,7 @@ This document illustrates how our gateway can be integrated into your Android ap
 
     dependencies {
     ...
-    implementation 'com.fawry.fawrypay:avl:2.0.1' 
+    implementation 'com.fawry.fawrypay:avl:2.0.2' 
     }
 
 3. Add the following to your `Manifest.xml`
